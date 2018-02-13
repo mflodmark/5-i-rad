@@ -3,7 +3,9 @@ var game = new Game();
 $("#refresh").click(function () {
     var canvas = document.getElementById("grid")
     var turn = document.getElementById("turn");
-
+    var winner = document.getElementById("winner");
+    
+    winner.innerText = "?"
     turn.innerText = 0;
 
     game = new Game();
@@ -110,9 +112,7 @@ function GetCell(x, y, boxSize) {
 function CheckWinner(cellNr, player) {
     var row = Math.ceil((cellNr / 10))
     var col = Math.ceil((cellNr % 10))
-    var diagonal =
-
-        console.log("Row = " + row)
+    console.log("Row = " + row)
     console.log("Col = " + col)
 
     // Check winner in row
@@ -120,9 +120,8 @@ function CheckWinner(cellNr, player) {
     game.grid.map((p, i) => {
         if (Math.ceil(((i + 1) / 10)) == row) {
             if (p["player"] == player) {
-                console.log("Player " + player + " har klickat på rad " + row)
                 times += 1
-                if (times == 5) { alert("Winner is " + player) }
+                if (times == 5) {Winner(player)}
             } else {
                 times = 0
             }
@@ -134,30 +133,55 @@ function CheckWinner(cellNr, player) {
     game.grid.map((p, i) => {
         if (Math.ceil(((i + 1) % 10)) == col) {
             if (p["player"] == player) {
-                console.log("Player " + player + " har klickat på col " + col)
                 times += 1
-                if (times == 5) { alert("Winner is " + player) }
+                if (times == 5) {Winner(player)}
             } else {
                 times = 0
             }
         }
     })
 
-    // Check winner in diagonal    
-    times = 0
+    // Check winner in diagonal  
     game.grid.map((p, i) => {
-        game.grid.map((p, indx) => {
-            if (i == (indx - 11)) {
-                if (p["player"] == player) {
-                    console.log("Player " + player + " har klickat på diagonal ")
+        var currentCol = Math.ceil((i % 10))
+
+        times = 0
+        // Check row 1-6
+        if (currentCol == 1 || currentCol == 2 || currentCol == 3 || currentCol == 4 || currentCol == 5
+            || currentCol == 6) {
+            for (let index = i; index < game.grid.length; index += 11) {
+                if (game.grid[index]["player"] == player) {
                     times += 1
-                    if (times == 5) { alert("Winner is " + player) }
+                    if (times == 5) { Winner(player) }
                 } else {
                     times = 0
                 }
             }
-        })
+        }
+
+        times = 0
+        // Check row 5-10
+        if (currentCol == 10 || currentCol == 9 || currentCol == 8 || currentCol == 7 || currentCol == 6
+            || currentCol == 5) {
+            for (let index = i; index < game.grid.length; index += 9) {
+                if (game.grid[index]["player"] == player) {
+                    times += 1
+                    if (times == 5) { Winner(player) }
+                } else {
+                    times = 0
+                }
+            }
+        }
     })
+}
+
+function Winner(player) {
+    var winner = document.getElementById("winner");
+    var canvas = document.getElementById("grid")
+    winner.innerText = "Spelare " + player
+    winner.style.color = "green"
+    winner.style.border = "5px solid red"
+    canvas.addEventListener('click', ToggleClickState, true);
 }
 
 function ToggleClickState(e) {
