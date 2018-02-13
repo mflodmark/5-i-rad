@@ -12,7 +12,7 @@ class Game {
         var c = canvas.getContext("2d");
 
         // Background
-        c.fillStyle = "white";
+        c.fillStyle = "orange";
         c.fillRect(0, 0, canvas.width, canvas.height);
 
         // Stroke color
@@ -34,13 +34,9 @@ class Game {
             c.moveTo(0, h);
             c.lineTo(canvas.height, h);
             c.stroke();
-
         })
-
         c.closePath();
     }
-
-
 }
 
 

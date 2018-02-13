@@ -9,30 +9,33 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
+
     <link href="/css/main.css" rel="stylesheet">
 </head>
 
 <body>
     <h1 class="text-center">5-i-rad</h1>
-    <div class="row">
-        <div class="col-sm-3 text-right">
-            <h2>Omgångar:
-                <span id="turn">0</span>
-            </h2>
-            <h3>Aktiv cell =
-                <span id="clicked-cell">0</span>
-            </h3>
-            <button id="refresh">Starta om spel</button>
-        </div>
-        <div class="col-sm-6 text-center">
-            <canvas id="grid" width="500" height="500"></canvas>
-        </div>
-        <div class="col-sm-3 text-left">
-            <h2>Spelare 1 = X</h2>
-            <h2>Spelare 2 = O</h2>
-            <h3>Vinnare = 
-                <span id="winner">?</span>
-            </h3>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 text-right">
+                <h2>Omgångar:
+                    <span id="turn">0</span>
+                </h2>
+                <h3>Aktiv cell =
+                    <span id="clicked-cell">0</span>
+                </h3>
+                <button id="refresh" class="btn btn-info">Starta om spel</button>
+            </div>
+            <div class="col-sm-6 text-center">
+                <canvas id="grid" width="500" height="500"></canvas>
+            </div>
+            <div class="col-sm-3 text-left">
+                <h2>Spelare 1 = X</h2>
+                <h2>Spelare 2 = O</h2>
+                <h3>Vinnare =
+                    <span id="winner">?</span>
+                </h3>
+            </div>
         </div>
     </div>
 

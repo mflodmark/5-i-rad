@@ -2,3 +2,18 @@ canvas {
     border: solid 5px black;
     border-radius: 5px;
 }
+
+body {
+    background-image: url("../images/bild.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+h1, h2, h3 {
+    color:#d2dae2;
+}
+
+canvas {
+    opacity: 0.9;
+}

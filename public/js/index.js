@@ -47,7 +47,7 @@ function HandleClick(e) {
 
                 // Create X        
                 c.beginPath();
-                c.strokeStyle = "blue";
+                c.strokeStyle = "#f53b57";
                 var counter = 0;
                 var interval = 10;
                 var padding = 10;
@@ -62,7 +62,7 @@ function HandleClick(e) {
                         clearInterval(intervalId)
                         var counter2 = 0;
                         var intervalId2 = setInterval(function () {
-                            counter2 += 1;
+                            counter2 += 2;
                             c.moveTo(x + boxSize - padding, y + padding);
                             c.lineTo(x + boxSize - counter2 - padding, y + counter2 + padding);
                             c.stroke();
@@ -88,8 +88,9 @@ function HandleClick(e) {
                     var start = 0;
 
                     c.clearRect(x + 5, y + 5, boxSize - 10, boxSize - 10)
+                    c.fillRect(x + 5, y + 5, boxSize - 10, boxSize - 10)                    
                     c.beginPath();
-                    c.strokeStyle = "green";
+                    c.strokeStyle = "#3c40c6";
                     c.arc(x + boxSize / 2, y + boxSize / 2, boxSize / 3, start, counter3);
                     c.stroke();
                     c.closePath();
@@ -149,8 +150,7 @@ function CheckWinner(cellNr, player) {
 
     // Check winner in diagonal  
     game.grid.map((p, i) => {
-        var currentCol = Math.ceil((i % 10))
-
+        var currentCol = Math.ceil((i % 10)) + 1
         times = 0
         // Check row 1-6
         if (currentCol == 1 || currentCol == 2 || currentCol == 3 || currentCol == 4 || currentCol == 5
